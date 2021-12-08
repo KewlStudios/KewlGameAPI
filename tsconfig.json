@@ -9,5 +9,7 @@
     "allowJs": true,
     "moduleResolution": "node",
     "sourceMap": true,
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node"],
   }
 }

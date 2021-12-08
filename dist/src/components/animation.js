@@ -15,12 +15,26 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var Animation = /** @class */ (function (_super) {
-    __extends(Animation, _super);
-    function Animation() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var PIXI = require("pixi.js");
+var AnimationObject = /** @class */ (function (_super) {
+    __extends(AnimationObject, _super);
+    function AnimationObject(animArr) {
+        var _this = _super.call(this) || this;
+        //let animArr: string[] = assets.animaitons[0].A;
+        var textureArray = [];
+        for (var i = 0; i < animArr.length; i++) {
+            var texture = PIXI.Texture.from(animArr[i]);
+            textureArray.push(texture);
+        }
+        ;
+        _this.animation = new PIXI.AnimatedSprite(textureArray);
+        _this.addChild(_this.animation);
+        return _this;
     }
-    return Animation;
+    AnimationObject.prototype.play = function () {
+        this.animation.play();
+    };
+    return AnimationObject;
 }(PIXI.Sprite));
-exports.default = Animation;
+exports.default = AnimationObject;
 //# sourceMappingURL=animation.js.map
